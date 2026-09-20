@@ -248,6 +248,8 @@ checksum = "3ded4057c258ba199e2d26386d3af3780957ecaee6c4ef4041c6b4b8b97c0b06"
 [[package]]
 name = "blitkit"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5f0696c0b382a0847942a5d232aea2ba3d7fb4217bf5bed2d6cb5d68dd332c5d"
 dependencies = [
  "bytemuck",
  "cgmath",
