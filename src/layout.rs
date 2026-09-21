@@ -1,5 +1,5 @@
 use crate::board::{HIDDEN_ROWS, VISIBLE_HEIGHT, WIDTH};
-use cgmath::Vector2;
+use glam::Vec2;
 
 /// The board takes 10 columns and the panels four each, so the window is
 /// divided into this many columns of width.
@@ -11,20 +11,20 @@ pub const TOTAL_COLUMNS: f32 = 18.0;
 #[derive(Debug, Copy, Clone)]
 pub struct Layout {
   /// Top-left corner of the visible board, in pixels.
-  pub origin: Vector2<f32>,
+  pub origin: Vec2,
   pub cell: f32,
   /// The window, so the panels can center themselves in what is left of it.
-  pub window: Vector2<f32>,
+  pub window: Vec2,
 }
 
 impl Layout {
-  pub fn new(size: Vector2<f32>) -> Layout {
+  pub fn new(size: Vec2) -> Layout {
     let by_height = size.y / VISIBLE_HEIGHT as f32;
     let by_width = size.x / TOTAL_COLUMNS;
     let cell = by_height.min(by_width).floor().max(1.0);
 
-    let board = Vector2::new(cell * WIDTH as f32, cell * VISIBLE_HEIGHT as f32);
-    let origin = Vector2::new((size.x - board.x) * 0.5, (size.y - board.y) * 0.5);
+    let board = Vec2::new(cell * WIDTH as f32, cell * VISIBLE_HEIGHT as f32);
+    let origin = Vec2::new((size.x - board.x) * 0.5, (size.y - board.y) * 0.5);
 
     Layout {
       origin,
@@ -33,8 +33,8 @@ impl Layout {
     }
   }
 
-  pub fn board_size(&self) -> Vector2<f32> {
-    Vector2::new(
+  pub fn board_size(&self) -> Vec2 {
+    Vec2::new(
       self.cell * WIDTH as f32,
       self.cell * VISIBLE_HEIGHT as f32,
     )
@@ -42,8 +42,8 @@ impl Layout {
 
   /// The center of a board cell in pixels. Hidden rows land above the board's
   /// origin, which is off the top of the playfield and not drawn.
-  pub fn cell_center(&self, x: i32, y: i32) -> Vector2<f32> {
-    Vector2::new(
+  pub fn cell_center(&self, x: i32, y: i32) -> Vec2 {
+    Vec2::new(
       self.origin.x + (x as f32 + 0.5) * self.cell,
       self.origin.y + ((y - HIDDEN_ROWS) as f32 + 0.5) * self.cell,
     )
@@ -56,14 +56,14 @@ impl Layout {
 
   /// Center of the space left of the board, where hold and the score go. Panel
   /// content is centered on this, so it never runs over the board's edge.
-  pub fn left_panel(&self) -> Vector2<f32> {
-    Vector2::new(self.origin.x * 0.5, self.origin.y + self.cell)
+  pub fn left_panel(&self) -> Vec2 {
+    Vec2::new(self.origin.x * 0.5, self.origin.y + self.cell)
   }
 
   /// Center of the space right of the board, where the next piece goes.
-  pub fn right_panel(&self) -> Vector2<f32> {
+  pub fn right_panel(&self) -> Vec2 {
     let board_right = self.origin.x + self.board_size().x;
-    Vector2::new(
+    Vec2::new(
       (board_right + self.window.x) * 0.5,
       self.origin.y + self.cell,
     )

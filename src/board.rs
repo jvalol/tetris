@@ -1,5 +1,5 @@
 use crate::piece::Piece;
-use cgmath::Vector4;
+use glam::Vec4;
 
 pub const WIDTH: i32 = 10;
 pub const VISIBLE_HEIGHT: i32 = 20;
@@ -10,7 +10,7 @@ pub const HEIGHT: i32 = VISIBLE_HEIGHT + HIDDEN_ROWS;
 /// The stack of locked cells. Cell (0, 0) is the top-left, x grows right and y
 /// grows down, so the first visible row is y == HIDDEN_ROWS.
 pub struct Board {
-  cells: Vec<Option<Vector4<f32>>>,
+  cells: Vec<Option<Vec4>>,
 }
 
 impl Board {
@@ -26,14 +26,14 @@ impl Board {
     }
   }
 
-  pub fn cell(&self, x: i32, y: i32) -> Option<Vector4<f32>> {
+  pub fn cell(&self, x: i32, y: i32) -> Option<Vec4> {
     if !Board::on_board(x, y) {
       return None;
     }
     self.cells[(y * WIDTH + x) as usize]
   }
 
-  pub fn fill(&mut self, x: i32, y: i32, color: Vector4<f32>) {
+  pub fn fill(&mut self, x: i32, y: i32, color: Vec4) {
     if Board::on_board(x, y) {
       self.cells[(y * WIDTH + x) as usize] = Some(color);
     }
@@ -97,8 +97,8 @@ mod tests {
   use super::*;
   use crate::piece::{Piece, Shape};
 
-  fn red() -> Vector4<f32> {
-    Vector4::new(1.0, 0.0, 0.0, 1.0)
+  fn red() -> Vec4 {
+    Vec4::new(1.0, 0.0, 0.0, 1.0)
   }
 
   fn fill_row(board: &mut Board, y: i32) {

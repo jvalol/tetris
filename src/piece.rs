@@ -1,4 +1,4 @@
-use cgmath::Vector4;
+use glam::Vec4;
 
 #[derive(Debug, Copy, Clone, PartialEq, Eq)]
 pub enum Shape {
@@ -22,7 +22,7 @@ pub const SHAPES: [Shape; 7] = [
 ];
 
 impl Shape {
-  pub fn color(self) -> Vector4<f32> {
+  pub fn color(self) -> Vec4 {
     let (r, g, b) = match self {
       Shape::I => (0.0, 0.85, 0.9),
       Shape::O => (0.95, 0.85, 0.1),
@@ -33,7 +33,7 @@ impl Shape {
       Shape::L => (0.95, 0.55, 0.15),
     };
 
-    Vector4::new(r, g, b, 1.0)
+    Vec4::new(r, g, b, 1.0)
   }
 
   /// The piece's four cells around its own origin, in its starting rotation.
@@ -75,7 +75,7 @@ impl Piece {
     piece
   }
 
-  pub fn color(&self) -> Vector4<f32> {
+  pub fn color(&self) -> Vec4 {
     self.shape.color()
   }
 

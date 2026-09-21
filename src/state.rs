@@ -3,7 +3,7 @@ use crate::board::{Board, HEIGHT, WIDTH};
 use crate::layout::Layout;
 use crate::piece::{Piece, Shape};
 use crate::tetris_game::Event;
-use cgmath::Vector2;
+use glam::Vec2;
 use blitkit::geometry::quad::Quad;
 use blitkit::geometry::Geometry;
 use blitkit::renderer::render_text::{RenderText, TextRenderer, UNBOUNDED_F32};
@@ -114,7 +114,7 @@ impl State {
 
   /// Places everything for a window of `size` pixels. The board is stored in
   /// cells, so a resize only changes where things are drawn.
-  pub fn layout(&mut self, size: Vector2<f32>) {
+  pub fn layout(&mut self, size: Vec2) {
     self.layout = Layout::new(size);
     let layout = self.layout;
     // narrow enough that "Score: 12345" fits the panel even in a small window
@@ -203,7 +203,7 @@ impl State {
   }
 
   /// One cell of the stack, inset a little so the blocks read separately.
-  fn block(&self, x: i32, y: i32, color: cgmath::Vector4<f32>) -> Quad {
+  fn block(&self, x: i32, y: i32, color: glam::Vec4) -> Quad {
     let size = self.layout.cell - (self.layout.cell * 0.1).max(1.0);
     Quad::colored(
       self.layout.cell_center(x, y),
@@ -216,7 +216,7 @@ impl State {
     let board = self.layout.board_size();
     let origin = self.layout.origin;
     let thickness = (self.layout.cell * 0.15).max(2.0);
-    let border = cgmath::Vector4::new(0.6, 0.6, 0.65, 1.0);
+    let border = glam::vec4(0.6, 0.6, 0.65, 1.0);
 
     let edges = [
       (
@@ -247,13 +247,13 @@ impl State {
   }
 
   /// Draws a piece in a panel, under its label.
-  fn push_preview(&self, geometry: &mut Geometry, shape: Shape, anchor: Vector2<f32>) {
+  fn push_preview(&self, geometry: &mut Geometry, shape: Shape, anchor: Vec2) {
     let cell = self.layout.cell * 0.8;
     let size = cell - (cell * 0.1).max(1.0);
-    let center = Vector2::new(anchor.x, anchor.y + self.layout.cell * 2.5);
+    let center = Vec2::new(anchor.x, anchor.y + self.layout.cell * 2.5);
 
     for (x, y) in Piece::new(shape).board_cells().iter() {
-      let position = Vector2::new(
+      let position = Vec2::new(
         center.x + *x as f32 * cell,
         center.y + *y as f32 * cell,
       );
