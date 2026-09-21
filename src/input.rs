@@ -1,4 +1,4 @@
-use blitkit::keyboard::*;
+use blitzkit::keyboard::*;
 
 /// Held flags for the keys the game watches. Moves and rotations happen on the
 /// press, so those are cleared once a system has acted on them.

@@ -1,8 +1,8 @@
-use blitkit::geometry::Geometry;
-use blitkit::keyboard::*;
-use blitkit::renderer::render_text::TextRenderer;
-use blitkit::sound::SoundSystem;
-use blitkit::Game;
+use blitzkit::geometry::Geometry;
+use blitzkit::keyboard::*;
+use blitzkit::renderer::render_text::TextRenderer;
+use blitzkit::sound::SoundSystem;
+use blitzkit::Game;
 
 use crate::input::Input;
 use crate::state::*;
@@ -184,7 +184,7 @@ impl Game for TetrisGame {
 #[cfg(test)]
 mod tests {
   use super::*;
-  use blitkit::geometry::Geometry;
+  use blitzkit::geometry::Geometry;
 
   fn game_in(game_state: GameState) -> TetrisGame {
     let mut game = TetrisGame::new();

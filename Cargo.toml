@@ -6,7 +6,7 @@ edition = "2018"
 rust-version = "1.87"
 
 [dependencies]
-blitkit = "0.2"
+blitzkit = "0.3"
 glam = "0.33"
 rand = "0.8.3"
 rodio = { version = "0.22", default-features = false, features = ["wav"] }

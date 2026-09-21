@@ -1,6 +1,6 @@
 # tetris
 
-Tetris on `blitkit`, which lives at `../blitkit` and owns the window,
+Tetris on `blitzkit`, which lives at `../blitzkit` and owns the window,
 rendering, input, and sound. The third game on that engine, after pong and snake.
 
 ## Build and test
@@ -29,7 +29,7 @@ Behavior changes are spec driven:
 
 ## Layout
 
-- `src/main.rs` — hands a `TetrisGame` to `blitkit::start`.
+- `src/main.rs` — hands a `TetrisGame` to `blitzkit::start`.
 - `src/tetris_game.rs` — the `Game` impl and the state machine.
 - `src/board.rs` — the grid of cells, collision, and line clears.
 - `src/piece.rs` — the seven tetrominoes and rotation.
