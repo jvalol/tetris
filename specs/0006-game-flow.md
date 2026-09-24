@@ -1,6 +1,6 @@
 # 0006 Game flow
 
-**Status:** draft
+**Status:** implemented
 **Date:** 2026-09-20
 
 ## Goal

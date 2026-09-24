@@ -1,6 +1,6 @@
 # 0004 Next and hold
 
-**Status:** draft
+**Status:** implemented
 **Date:** 2026-09-20
 
 ## Goal
