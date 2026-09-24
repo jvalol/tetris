@@ -13,5 +13,5 @@ mod util;
 use tetris_game::TetrisGame;
 
 fn main() {
-  start("Tetris", Box::new(TetrisGame::new()));
+    start("Tetris", Box::new(TetrisGame::new()));
 }

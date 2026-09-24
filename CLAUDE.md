@@ -50,4 +50,3 @@ Behavior changes are spec driven:
 - **Systems are pure game logic.** They take input, state, and events, and touch
   no GPU, window, or audio. That is what makes them testable, so keep it that way.
 - Tests live next to the code in `#[cfg(test)] mod tests`.
-- Two space indentation, matching pong and snake.
