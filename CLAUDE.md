@@ -1,7 +1,9 @@
 # tetris
 
-Tetris on `blitzkit`, which lives at `../blitzkit` and owns the window,
-rendering, input, and sound. The third game on that engine, after pong and snake.
+Tetris on `blitzkit`, which owns the window, rendering, input, and sound. The
+third game on that engine, after pong and snake. The dependency is the published
+crate, overridden by the engine checkout at `../blitzkit` when built inside this
+project folder.
 
 ## Build and test
 
