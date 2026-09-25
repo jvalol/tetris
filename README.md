@@ -10,5 +10,6 @@ on that engine after pong and snake.
 Part of [blitzkit](https://github.com/jvalol/blitzkit), a graphics engine in
 Rust and the games built on it: [pong](https://github.com/jvalol/pong),
 [snake](https://github.com/jvalol/snake),
-[tetris](https://github.com/jvalol/tetris) and
-[marble](https://github.com/jvalol/marble).
+[tetris](https://github.com/jvalol/tetris),
+[marble](https://github.com/jvalol/marble) and
+[slider](https://github.com/jvalol/slider).
